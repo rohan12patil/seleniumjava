@@ -16,6 +16,17 @@ public class FindElement extends Init{
        
         List<WebElement> radioButtons =  driver.findElements(By.cssSelector("input[type]='radio'"));
         System.out.println(radioButtons.size());
+
+        // image button with id
+        WebElement imageButton = driver.findElement(By.id("imageButton"));
+        
+        // button with value & without id
+        WebElement clickButton = driver.findElement(By.cssSelector("input[value='Click']"));
+        
+        // input with name attr
+        WebElement nameTextBox = driver.findElement(By.name("id-name1"));
+
+
         // driver.quit();
     }
 }
