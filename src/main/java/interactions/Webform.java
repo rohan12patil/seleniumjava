@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import setup.Init;
 public class Webform  extends Init{
-     public static void main(String[] args){
+     public static void main(String[] args) throws InterruptedException{
         driver.get("https://www.selenium.dev/selenium/web/web-form.html");
         
         // enter text into username input of type text 
@@ -28,10 +28,11 @@ public class Webform  extends Init{
 
         // Radio Buttons
         driver.findElement(By.id("my-radio-2")).click();
-
+        Thread.sleep(7000);
         // submit form 
         driver.findElement(By.xpath("//button[text()='Submit']")).click();
 
+        Thread.sleep(5000);
         driver.quit();
 
     }
