@@ -12,6 +12,7 @@ public class Init {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
+        options.enableBiDi();
         driver= new ChromeDriver(options);  
     }
     // public static void main(String[] args) {
