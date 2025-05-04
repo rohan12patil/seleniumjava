@@ -4,7 +4,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.bidi.browsingcontext.BrowsingContext;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 import setup.Init;
 
@@ -16,7 +20,29 @@ public class Screenshots  extends Init {
         // Full page
         String fullScreenshot = browsingContext.captureScreenshot();
         saveScreenshot(fullScreenshot, "webform_screenshot.png");
-        driver.quit();
+        
+
+        // Element
+        WebElement colorPicker = driver.findElement(By.name("my-colors"));
+        String internalElementId = ((RemoteWebElement) colorPicker).getId();
+        String elementScreenshot = browsingContext.captureElementScreenshot(internalElementId);
+        saveScreenshot(elementScreenshot, "element_screenshot.png");
+
+        //viewPort
+        driver.findElement(By.name("my-date")).click();
+        Rectangle datePicker = driver.findElement(By.className("datepicker")).getRect();
+        String viewportScreenshot = browsingContext.captureBoxScreenshot(
+            datePicker.getX(), 
+            datePicker.getY(),
+            datePicker.getWidth(),
+            datePicker.getHeight()
+            );
+        saveScreenshot(viewportScreenshot, "viewport_screenshot.png");
+        
+        
+        
+        driver.quit();    
+
 
     }
 
