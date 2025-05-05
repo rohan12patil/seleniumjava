@@ -19,5 +19,12 @@ public class LoginTests extends BaseTests {
         String message = loginPage.login("username","password");
         assertEquals("You have successfully logged in.", message);
     }
+
+    @Test
+    public void loginWithNoUserNameTest(){
+        loginPage.setPassword("password");
+        String message = loginPage.clickLoginButton();
+        assertEquals("Please enter valid credentials", message);  
+    }
     
 }
